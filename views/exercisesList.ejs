@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises List</title>
+    <link rel="stylesheet" href="../public/css/styles.css" type="text/css">
+</head>
+
+<body>
+    <header>
+        <h1>
+            Exercises
+        </h1>
+        <h2><a class="link" href='/add-exercise'>Add new exercise</a></h2>
+    </header>
+    <main>
+        <% if(exercises.length> 0) { %>
+            <table class="table">
+                <tr>
+                    <th class="table__cell--header">Name</th>
+                    <th class="table__cell--header">Weight</th>
+                    <th class="table__cell--header">Reps</th>
+                    <th class="table__cell--header">Sets</th>
+                    <th class="table__cell--header">Actions</th>
+                </tr>
+                <% exercises.forEach((exercise, index)=> { %>
+                    <tr>
+                        <td class="table__cell">
+                            <%= exercise.name %>
+                        </td>
+                        <td class="table__cell">
+                            <%= exercise.weight %>
+                        </td>
+                        <td class="table__cell">
+                            <%= exercise.reps %>
+                        </td>
+                        <td class="table__cell"> 
+                            <%= exercise.sets %>
+                        </td>
+                        <td class="table__cell">
+                            <form action="./edit-exercise/<%= index %>" method="get">
+                                <button type="submit">Edit/Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </table>
+            <% } else { %>
+                <p>No exercises added yet.</p>
+                <% } %>
+    </main>
+
+</html>
